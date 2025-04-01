@@ -1,0 +1,16 @@
+.content-wrapper {
+    padding: 40px 20px;
+    text-align: center;
+}
+.content-wrapper h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.content-box {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}

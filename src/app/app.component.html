@@ -1,10 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container-fluid">
       <!-- Logo -->
-      <a class="navbar-brand" href="#">
-          <img src="https://via.placeholder.com/150x40?text=RFQ+Logo" alt="RFQ Logo">
-      </a>
-
+       <h3 class="pe-2">RFQ</h3>
+     
       <!-- Mobile Toggle Button -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,34 +12,38 @@
           <!-- Navigation Links -->
           <ul class="navbar-nav me-auto">
               <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-file-contract"></i> RFQs</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="rfqs"><i class="fas fa-file-contract"></i> RFQs</a></li>
+              @if (userService.loggedUserData?.role=="Customer") {
+                  <li class="nav-item"><a class="nav-link" routerLink="/create-rfq"><i class="fas fa-file-contract"></i>Create RFQ</a></li>
+                  <li class="nav-item"><a class="nav-link" routerLink="/my-rfq"><i class="fas fa-file-contract"></i>My RFQ</a></li>
+              }
               <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-industry"></i> Suppliers</a></li>
               <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-handshake"></i> Contracts</a></li>
           </ul>
 
           <!-- Right Section: Register/Login or User Info -->
+       
           <ul class="navbar-nav">
               <!-- If User is Not Logged In -->
-              <li class="nav-item">
-                  <a class="btn btn-outline-primary btn-custom mx-1" href="#"><i class="fas fa-user-plus"></i> Register</a>
-              </li>
-              <li class="nav-item">
-                  <a class="btn btn-primary btn-custom mx-1" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
-              </li>
-
+              @if(userService.loggedUserData == undefined)
+              {
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary btn-custom mx-1" routerLink="/register"><i class="fas fa-user-plus"></i> Register</a>
+                </li>
+              }          
               <!-- If User is Logged In (Replace with dynamic check) -->
-              <!--
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-user"></i> John Doe
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                      <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
-                      <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                  </ul>
+              @else {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{userService.loggedUserData?.userName}}
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="btn btn-primary btn-custom mx-1" routerLink="/register" (click)="onLogOff()"><i class="fas fa-sign-in-alt"></i>Log Off</a>
               </li>
-              -->
+              }       
           </ul>
       </div>
   </div>
 </nav>
+<router-outlet></router-outlet>

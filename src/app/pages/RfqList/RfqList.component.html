@@ -1,3 +1,35 @@
-<p>
-  RfqList works!
-</p>
+<h3 class="text-center text-success mt-5">
+  <i class="fas fa-list"></i> My RFQs
+</h3>
+<div id="rfqList" class="row mt-3">
+  @for (item of myRfqList$ | async ; track $index) {
+  <div class="col-md-4">
+    <div class="rfq-card">
+      <div class="card-header">
+        <i class="fas fa-file-alt"></i> RFQ: {{item.partName}}
+      </div>
+      <div class="card-body">
+        <div class="rfq-info">
+          <i class="fas fa-cogs"></i> <strong>Part:</strong>{{item.partName}}
+        </div>
+        <div class="rfq-info">
+          <i class="fas fa-sort-numeric-up"></i> <strong>Quantity:</strong> {{item.quantity}}
+        </div>
+        <div class="rfq-info">
+          <i class="fas fa-calendar-alt"></i> <strong>Required By:</strong> {{item.requiredByDate | date}}
+          Feb 2025
+        </div>
+        <div class="rfq-info">
+          <i class="fas fa-align-left"></i>
+          <strong>Description:</strong> {{item.description}}
+        </div>
+      </div>
+      <div class="btn-container">
+        <button class="btn-view" [routerLink]="'/openrfq/'+item.rfqId">
+          <i class="fas fa-eye" ></i> View Details
+        </button>
+      </div>
+    </div>
+  </div>
+}
+</div>

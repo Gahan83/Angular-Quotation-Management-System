@@ -1,3 +1,35 @@
-<p>
-  registration works!
-</p>
+<div class="body">
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="userName" placeholder="User Name" [(ngModel)]="registerObj.userName" required="">
+					<input type="email" name="emailId" placeholder="Email" [(ngModel)]="registerObj.emailId" required="">
+          			<input type="text" name="fullName" placeholder="Full Name" [(ngModel)]="registerObj.fullName" required="">
+					<input type="password" name="password" placeholder="Password" [(ngModel)]="registerObj.password" required="">
+					<div class="row">
+						<div class="col-4 p-0 m-0"> 
+							<button [class]="registerObj.role=='Customer'?'btn btn-primary':'btn btn-success'" (click)="setRole('Customer')">Customer</button>
+						</div>
+						<div class="col-4 p-0 m-0">
+							<button style="background-color: #573b8a;" (click)="onSignUp()">Sign up</button>
+						</div>
+						<div class="col-3 p-0 m-0">
+							<button [class]="registerObj.role=='Vendor'?'btn btn-primary':'btn btn-success'" (click)="setRole('Vendor')">Vendor</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="text" name="userName" placeholder="UserName" [(ngModel)]="loginObj.userName" required="">
+					<input type="password" name="password" placeholder="Password" [(ngModel)]="loginObj.password" required="">
+					<button style="background-color: #573b8a;" (click)="onLogin()">Login</button>
+				</form>
+			</div>
+	</div>
+</div>

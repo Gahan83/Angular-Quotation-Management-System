@@ -1,0 +1,4 @@
+.body { background-color: #f8f9fa; }
+.rfq-card { transition: 0.3s; }
+.rfq-card:hover { transform: scale(1.03); }
+.filter-section { background: #ffffff; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
